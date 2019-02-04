@@ -16,18 +16,18 @@
     </v-toolbar>
 
     <v-content>
-      <HelloWorld/>
+      <FiestyDice/>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import FiestyDice from './components/FiestyDice'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    FiestyDice
   },
   data () {
     return {

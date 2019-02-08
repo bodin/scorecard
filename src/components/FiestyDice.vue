@@ -5,10 +5,19 @@
         <v-sheet elevation=3>
           <v-layout row wrap pa-3>          
             <v-flex xs12>
-                <v-text-field label="Dice 6" outline></v-text-field>
+              <Row 
+                display="Dice 6"
+                @score="score('six', $event)"
+              ></Row>
             </v-flex>
             <v-flex xs12>
-                <v-text-field label="Dice 5" outline></v-text-field>
+              <Row 
+                display="Dice 5"
+                @score="score('five', $event)"
+              ></Row>
+            </v-flex>
+            <v-flex xs12>
+             {{total()}}
             </v-flex>
           </v-layout>
         </v-sheet>        
@@ -18,61 +27,26 @@
 </template>
 
 <script>
-  export default {
-    data: () => ({
-      ecosystem: [
-        {
-          text: 'vuetify-loader',
-          href: 'https://github.com/vuetifyjs/vuetify-loader'
-        },
-        {
-          text: 'github',
-          href: 'https://github.com/vuetifyjs/vuetify'
-        },
-        {
-          text: 'awesome-vuetify',
-          href: 'https://github.com/vuetifyjs/awesome-vuetify'
-        }
-      ],
-      importantLinks: [
-        {
-          text: 'Documentation',
-          href: 'https://vuetifyjs.com'
-        },
-        {
-          text: 'Chat',
-          href: 'https://community.vuetifyjs.com'
-        },
-        {
-          text: 'Made with Vuetify',
-          href: 'https://madewithvuetifyjs.com'
-        },
-        {
-          text: 'Twitter',
-          href: 'https://twitter.com/vuetifyjs'
-        },
-        {
-          text: 'Articles',
-          href: 'https://medium.com/vuetify'
-        }
-      ],
-      whatsNext: [
-        {
-          text: 'Explore components',
-          href: 'https://vuetifyjs.com/components/api-explorer'
-        },
-        {
-          text: 'Select a layout',
-          href: 'https://vuetifyjs.com/layout/pre-defined'
-        },
-        {
-          text: 'Frequently Asked Questions',
-          href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions'
-        }
+  import Row from './ScoreRow.vue'
 
-      ]
+  export default {
+    components: {
+      Row
+    },
+    methods:{
+      score: function(k, v){        
+        this.$set(this.rows, k, Number(v))        
+      }
+    },
+    data: () => ({
+      rows: {},
+      rolls: 0,
+      total: function(){
+        return 5 * (30-this.rolls) + Object.values(this.rows).reduce((t, n) => t + n , 0);
+      }
     })
   }
+
 </script>
 
 <style>

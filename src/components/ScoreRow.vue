@@ -1,17 +1,26 @@
 <template>
-  <v-text-field 
-    :label="display" 
-    v-model="score" 
-    @change="$emit('score', score)"
-    outline></v-text-field>
+  <b-form-input 
+    v-model="score"
+    type="text"
+    :placeholder="display"
+    @change="$emit('score', score)">
+  </b-form-input>
 </template>
 
 <script>
   export default {
-    props:['display'],
+    props : {
+      display: String, 
+      initialScore: Number,
+    },
     data: () => ({
-      score: 0
+      score: ''
     }),
+    beforeMount : function(){
+      if(this.initialScore >= 0){
+        this.score = this.initialScore;
+      }
+    },
     methods:{
       
     }

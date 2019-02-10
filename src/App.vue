@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import FiestyDice from './components/FiestyDice'
+import FiestyDice from './components/fiesty/FiestyDice'
 
 export default {
   name: 'App',

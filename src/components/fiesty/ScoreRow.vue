@@ -1,7 +1,7 @@
 <template>
   <b-form-input 
     v-model="score"
-    type="text"
+    type="number"
     :placeholder="display"
     @change="$emit('score', score)">
   </b-form-input>

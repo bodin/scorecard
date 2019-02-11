@@ -22,7 +22,7 @@
 
     </b-collapse>
   </b-navbar>
-  <b-container class="mt-5">  
+  <b-container class="mt-5 mb-5">  
     <b-row>
         <b-col lg="3" sm="0"></b-col>
         <b-col lg="6" sm="12">

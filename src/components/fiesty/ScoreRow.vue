@@ -1,10 +1,11 @@
 <template>
-  <b-form-input 
-    v-model="score"
-    type="number"
-    :placeholder="display"
-    @change="$emit('score', score)">
-  </b-form-input>
+  <b-input-group :prepend="display">
+    <b-form-input 
+      v-model="score"
+      type="number"
+      @change="changeScore">    
+    </b-form-input>
+  </b-input-group>  
 </template>
 
 <script>
@@ -21,12 +22,21 @@
         this.score = this.initialScore;
       }
     },
-    methods:{
-      
+    methods: {
+      changeScore: function() {
+        this.$emit('score', this.score);
+        document.activeElement.blur();
+      }
     }
   }
 </script>
 
-<style>
-
+<style scoped>
+  .form-control {
+    border-radius:0px;
+  }
+  .input-group-text {
+    width: 100px;
+    border-radius: 0px;
+  }
 </style>

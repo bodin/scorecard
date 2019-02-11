@@ -2,7 +2,7 @@
   <b-container>
     <b-row>
       <b-col>
-        <b-card>
+        <b-card no-body>
           <h6 slot="header">Rolls Taken {{rolls}}</h6>
           
           <Row :key="index" v-for="(item, index) in this.rows"

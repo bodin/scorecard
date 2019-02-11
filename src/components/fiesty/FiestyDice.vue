@@ -38,8 +38,8 @@
                   </div>
                 </b-input-group-prepend>
                 <b-input-group-append>
-                  <b-button v-if="rolls > 0" variant="primary" @click="rolls--">&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;</b-button>
-                  <b-button v-if="rolls < 30" variant="outline-primary" @click="rolls++">+</b-button>
+                  <b-button :disabled="rolls<=0" variant="primary" @click="rolls--">&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;</b-button>
+                  <b-button :disabled="rolls>=30" variant="outline-primary" @click="rolls++">+</b-button>
                 </b-input-group-append>
               </b-input-group>
             </div>
@@ -66,12 +66,12 @@
     data: () => ({
       rolls:30,
       rows: [
-        {key:0, label: ' 6', score:null, description: 'Red doubles, 75 for 6 (50 any other)'},
-        {key:1, label: ' 5', score:null, description: 'Red doubles, 75 for 6 (50 any other))'},
-        {key:2, label: ' 4', score:null, description: 'Red doubles, 75 for 6 (50 any other)'},
-        {key:3, label: ' 3', score:null, description: 'Red doubles, 50 for 6 (25 any other)'},
-        {key:4, label: ' 2', score:null, description: 'Red doubles, 50 for 6 (25 any other)'},
-        {key:5, label: ' 1', score:null, description: 'Red doubles, 50 for 6 (25 any other)'},
+        {key:0, label: '6', score:null, description: 'Red doubles, 75 for 6 (50 any other)'},
+        {key:1, label: '5', score:null, description: 'Red doubles, 75 for 6 (50 any other))'},
+        {key:2, label: '4', score:null, description: 'Red doubles, 75 for 6 (50 any other)'},
+        {key:3, label: '3', score:null, description: 'Red doubles, 50 for 6 (25 any other)'},
+        {key:4, label: '2', score:null, description: 'Red doubles, 50 for 6 (25 any other)'},
+        {key:5, label: '1', score:null, description: 'Red doubles, 50 for 6 (25 any other)'},
         {key:6, label: 'Run', score:null, description: '21 Points - red eligible'},
         {key:7, label: 'Set', score:null, description: '2|2|2, 3|3, 4|2 - red eligible'},
         {key:8, label: 'Sum', score:null},

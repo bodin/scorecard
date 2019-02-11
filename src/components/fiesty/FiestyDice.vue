@@ -32,9 +32,9 @@
               <b-input-group size="lg">   
                 <b-input-group-prepend>
                   <div class="input-group-text bg-light border-primary">
-                    <span v-if="rolls>1">{{rolls}} Rolls Left</span>
-                    <span v-else-if="rolls==1">{{rolls}} Roll Left!</span>
-                    <span v-else>No Rolls Left!</span>
+                    <span v-if="rolls>1">{{rolls}} Left</span>
+                    <span v-else-if="rolls==1">{{rolls}} Left!</span>
+                    <span v-else>No Rolls!</span>
                   </div>
                 </b-input-group-prepend>
                 <b-input-group-append>

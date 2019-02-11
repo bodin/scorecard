@@ -1,8 +1,9 @@
 <template>
-  <b-input-group :prepend="display">
+  <b-input-group :prepend="label">
     <b-form-input 
       v-model="score"
       type="number"
+      :placeholder="description"
       @change="changeScore">    
     </b-form-input>
   </b-input-group>  
@@ -11,7 +12,8 @@
 <script>
   export default {
     props : {
-      display: String, 
+      label: String, 
+      description: String, 
       initialScore: Number,
     },
     data: () => ({

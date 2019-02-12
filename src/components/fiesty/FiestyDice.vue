@@ -32,9 +32,8 @@
                   </div>
                 </b-input-group-prepend>
                 <b-input-group-append>
-                  <b-button :disabled="rolls<=0" variant="primary" @click="rolls--">&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;</b-button>
-                  <b-button :disabled="rolls>=30" variant="outline-primary" @click="rolls++">+</b-button>
-                  <b-button variant="outline-primary" @click="newGame">clear</b-button>
+                  <b-button :disabled="rolls<=0" variant="primary" @click="roleTaken">&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;</b-button>
+                  <b-button :disabled="rolls>=30" variant="outline-primary" @click="roleTakenBack">+</b-button>
                 </b-input-group-append>
               </b-input-group>
             </div>
@@ -62,6 +61,14 @@
         }
         
         this.saveGame();
+      },
+      roleTaken: function(){
+        this.rolls--
+        this.saveGame()
+      },
+      roleTakenBack: function(){
+        this.rolls++
+        this.saveGame()
       },
       saveGame() {
         const parsed = JSON.stringify({rolls: this.rolls, rows: this.rows});

@@ -3,7 +3,7 @@
     <b-row>
       <b-col>
         <b-card no-body>
-          <Row :key="index" v-for="(item, index) in this.rows"
+          <Row ref="row" :key="index" v-for="(item, index) in this.rows"
             :label="item.label"
             :description="item.description"
             :initialScore="item.score"
@@ -12,12 +12,6 @@
           
           <div slot="footer">
             <div class="float-left">
-              <!--
-              <div>
-                Bonus {{bonus()}}
-              </div>
-              <b-badge class="input-group input-group-lg" variant="success">{{total()}}</b-badge>
-              -->
 
               <b-input-group size="lg">  
                 <b-input-group-prepend>               
@@ -40,6 +34,7 @@
                 <b-input-group-append>
                   <b-button :disabled="rolls<=0" variant="primary" @click="rolls--">&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;</b-button>
                   <b-button :disabled="rolls>=30" variant="outline-primary" @click="rolls++">+</b-button>
+                  <b-button variant="outline-primary" @click="newGame">clear</b-button>
                 </b-input-group-append>
               </b-input-group>
             </div>
@@ -59,8 +54,49 @@
       Row
     },
     methods:{
-      score: function(k, v){  
-        this.rows[k].score =  Number(v)
+      score: function(k, v){
+        if(v == null || v == ''){
+          this.rows[k].score =  null
+        }else{
+          this.rows[k].score =  Number(v)
+        }
+        
+        this.saveGame();
+      },
+      saveGame() {
+        const parsed = JSON.stringify({rolls: this.rolls, rows: this.rows});
+        localStorage.setItem('fiesty', parsed);
+      },
+      newGame: function(){
+          for(var i=0; i < this.rows.length; i++){           
+            this.$refs.row[i].setScore(null)           
+          }
+          this.rolls = 30
+      },
+      bonus: function(){
+        return 5 * (this.rolls);
+      },
+      total: function(){
+        return this.bonus() + Object.values(this.rows).reduce((t, n) => t + n.score , 0);
+      }
+    },
+    mounted: function() {
+      if (localStorage.getItem('fiesty')) {
+        try {
+          var d = JSON.parse(localStorage.getItem('fiesty'));
+
+          for(var i=0; i < this.rows.length; i++){
+            if(d.rows[i].score != null){
+              this.$refs.row[i].setScore(d.rows[i].score)
+            }
+          }          
+                   
+          this.rolls = d.rolls;          
+        } catch(e) {
+          // eslint-disable-next-line 
+          console.log(e);
+          localStorage.removeItem('fiesty');
+        }
       }
     },
     data: () => ({
@@ -76,13 +112,7 @@
         {key:7, label: 'Set', score:null, description: '2|2|2, 3|3, 4|2 - red eligible'},
         {key:8, label: 'Sum', score:null},
         {key:9, label: 'Red', score:null, description: '10 Points per red number'}
-      ],
-      bonus: function(){
-        return 5 * (this.rolls);
-      },
-      total: function(){
-        return this.bonus() + Object.values(this.rows).reduce((t, n) => t + n.score , 0);
-      }
+      ]
     })
   }
 

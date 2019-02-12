@@ -9,7 +9,7 @@
     <b-collapse is-nav id="nav_collapse">
 
       <b-navbar-nav>
-        <b-nav-item href="#">New Game</b-nav-item>
+        <b-nav-item href="#" @click="newGame">New Game</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
@@ -26,7 +26,7 @@
     <b-row>
         <b-col lg="3" sm="0"></b-col>
         <b-col lg="6" sm="12">
-          <FiestyDice/>
+          <FiestyDice ref="app"/>
         </b-col>
         <b-col lg="3" sm="0"></b-col>
     </b-row>
@@ -45,6 +45,11 @@ export default {
   data () {
     return {
       game: "Fiesty Dice"
+    }
+  },
+  methods: {
+    newGame: function(){
+      this.$refs.app.newGame();
     }
   }
 }

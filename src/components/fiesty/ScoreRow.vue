@@ -30,8 +30,12 @@
     },
     methods: {
       changeScore: function() {
-        this.$emit('score', this.score);
+        this.setScore(this.score);
         document.activeElement.blur();
+      },
+      setScore: function(value) {
+        this.score = value;
+        this.$emit('score', this.score);
       }
     }
   }

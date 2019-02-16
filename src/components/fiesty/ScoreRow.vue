@@ -3,13 +3,17 @@
       <b-input-group-prepend>
         <div class="input-group-text">{{label}}</div>
       </b-input-group-prepend>
+      
       <b-form-input 
-        v-model="score"
-        type="number"
-        :placeholder="description"
-        @change="changeScore"
-        >    
-      </b-form-input>     
+          v-model="score"
+          type="number"
+          :placeholder="description"
+          @change="changeScore"
+          >    
+      </b-form-input>   
+      <template v-if="score != null && score != ''">      
+        <span class="fas fa-check form-control-feedback" style="color:green"></span>
+      </template>  
   </b-input-group>
 </template>
 
@@ -48,5 +52,14 @@
   .input-group-text {
     width: 75px;
     border-radius: 0px;
+  }
+  .form-control {
+    padding-right: 30px;
+  }
+
+  .form-control + .fas {
+    position: absolute;
+    right: 0;
+    padding: 8px 10px;
   }
 </style>

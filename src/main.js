@@ -22,19 +22,11 @@ const router = new VueRouter({
   ]
 })
 
-const GLOBAL = {
-  game: "Select a Game",
-  handle: {}
-}
-
 new Vue({
   router: router,
-  render: h => h(App, {
-    props: {
-      state: GLOBAL
-    }
-  }),
-  data: GLOBAL
+  render: h => h(App),
 }).$mount('#app')
 
-router.replace('/fiesty')
+if(router.currentRoute.path == '/'){
+  router.replace('/fiesty')
+}

@@ -4,7 +4,7 @@
 
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
-    <b-navbar-brand href="#">{{state.game}}</b-navbar-brand>
+    <b-navbar-brand href="#">{{currentGameName}}</b-navbar-brand>
 
     <b-collapse is-nav id="nav_collapse">
 
@@ -37,14 +37,25 @@
 
 <script>
 
+import Store from './Store.js'
+
 export default {
   name: 'App',
-  props : {
-    state: Object   
+  data : () => ({
+    shared : Store.data
+  }),
+  computed: {
+    currentGameName: function(){
+      if(this.shared.currentGame){
+        return this.shared.currentGame.name
+      }else{
+        return "Select Game"
+      }
+    }
   },
   methods: {
     newGame: function(){
-      this.state.handle.newGame();
+      Store.newGame();
     }
   }
 }

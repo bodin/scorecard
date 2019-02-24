@@ -46,8 +46,9 @@
 </template>
 
 <script>
-  import Row from './ScoreRow.vue'
-
+  import Row from './FiestyRow.vue'
+  import Store from '../../Store.js'
+  
   export default {
     components: {
       Row
@@ -88,8 +89,8 @@
       }
     },
     mounted: function() {
-      this.$root.$data.game="Fiesty Dice"
-      this.$root.$data.handle=this
+      Store.data.currentGame=this
+      Store.data.games['qwacks']=this
 
       if (localStorage.getItem('fiesty')) {
         try {
@@ -103,13 +104,12 @@
                    
           this.rolls = d.rolls;          
         } catch(e) {
-          // eslint-disable-next-line 
-          console.log(e);
           localStorage.removeItem('fiesty');
         }
       }
     },
     data: () => ({
+      name: "Fiesty Dice",
       rolls:30,
       rows: [
         {key:0, label: '6', score:null, description: 'Red doubles, 75 for 6 (50 any other)'},

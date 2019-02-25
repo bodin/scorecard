@@ -6,7 +6,7 @@ import App from './App.vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-import Qwacks from './components/qwacks/Qwacks'
+import Qwaxx from './components/qwaxx/Qwaxx'
 import FiestyDice from './components/fiesty/FiestyDice'
 
 
@@ -17,7 +17,7 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
   routes: [
-    { path: '/qwacks', component: Qwacks },
+    { path: '/qwaxx', component: Qwaxx },
     { path: '/fiesty', component: FiestyDice }    
   ]
 })

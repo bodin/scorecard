@@ -1,5 +1,12 @@
 # scorecard
 
+## TODO
+### Fiesty
+1. subtally rolls between taking scores
+
+### Qwaxx
+1. Save to local storage
+
 ## Project setup
 ```
 npm install

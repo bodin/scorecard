@@ -40,6 +40,9 @@
       setScore: function(value) {
         this.score = value;
         this.$emit('score', this.score);
+      },
+      newGame: function() {
+        this.setScore(null)
       }
     }
   }

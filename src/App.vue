@@ -16,7 +16,7 @@
       <b-navbar-nav class="ml-auto">
         <b-nav-item-dropdown text="Select Game" right>          
           <b-dropdown-item><router-link to="/fiesty">Fiesty Dice</router-link></b-dropdown-item>
-          <b-dropdown-item><router-link to="/qwacks">Qwacks</router-link></b-dropdown-item>        
+          <b-dropdown-item><router-link to="/qwaxx">Qwaxx</router-link></b-dropdown-item>        
         </b-nav-item-dropdown>
       </b-navbar-nav>
 

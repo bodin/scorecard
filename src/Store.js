@@ -5,5 +5,5 @@ export default {
   },
   newGame: function(){
     this.data.currentGame.newGame();
-  }
+  },
 }

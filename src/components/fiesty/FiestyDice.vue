@@ -12,14 +12,11 @@
           
           <div slot="footer">
             <div class="float-left">
-
               <b-input-group size="lg">  
                 <b-input-group-prepend>               
-                  <div class="input-group-text border-success text-success bg-light rounded bold" variant="primary"><b>{{total()}}</b></div>              
+                  <div class="input-group-text border-success text-success bg-light rounded"><b>{{total()}}</b></div>              
                 </b-input-group-prepend>
               </b-input-group>
-
-              
             </div>
 
             <div class="float-right">
@@ -48,7 +45,7 @@
 <script>
   import Row from './FiestyRow.vue'
   import Store from '../../Store.js'
-  
+
   export default {
     components: {
       Row
@@ -77,7 +74,7 @@
       },
       newGame: function(){
           for(var i=0; i < this.rows.length; i++){           
-            this.$refs.row[i].setScore(null)           
+            this.$refs.row[i].newGame()           
           }
           this.rolls = 30
       },

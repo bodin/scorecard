@@ -116,6 +116,5 @@
     padding:0px;   
     min-width: 50px;
     min-height: 50px;    
-    
   }
 </style>

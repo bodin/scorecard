@@ -136,4 +136,9 @@
   .container {
     max-width:100%;
   }
+  .btn {  
+    padding:0px;   
+    min-width: 50px;
+    min-height: 50px;    
+  }
 </style>

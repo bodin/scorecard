@@ -112,10 +112,10 @@
 </script>
 
 <style scoped>
-  button {  
-    /*   
+  .btn {  
+    padding:0px;   
     min-width: 44px;
     min-height: 44px;    
-    */
+    
   }
 </style>

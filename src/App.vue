@@ -22,14 +22,14 @@
 
     </b-collapse>
   </b-navbar>
-  <b-container class="mt-5 mb-5">  
+  <b-container id="cont" class="mt-5 mb-5">  
     <b-row>
-        <b-col lg="3" sm="0"></b-col>
-        <b-col lg="6" sm="12">
+        <b-col lg="3" md="0" sm="0"></b-col>
+        <b-col lg="6" md="12" sm="12">
           <router-view>           
           </router-view>          
         </b-col>
-        <b-col lg="3" sm="0"></b-col>
+        <b-col lg="3" md="0" sm="0"></b-col>
     </b-row>
   </b-container>
 </div>
@@ -60,3 +60,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .container {
+    max-width:100%;
+  }
+</style>

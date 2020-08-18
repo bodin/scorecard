@@ -1,5 +1,4 @@
 module.exports = {
     publicPath: '/scorecard',
-    outputDir: 'docs' 
-  
+    outputDir: 'docs'
 };
